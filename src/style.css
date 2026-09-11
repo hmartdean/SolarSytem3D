@@ -1,0 +1,50 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { overflow: hidden; background: #020205; font-family: 'Segoe UI', monospace, sans-serif; color: #fff; }
+
+#webgl { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; outline: none; }
+
+#hud-header {
+  position: absolute; top: 24px; left: 28px; z-index: 10; display: flex; gap: 16px; align-items: center;
+  pointer-events: none;
+}
+.logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 2px; color: #ffaa00; text-shadow: 0 0 12px rgba(255,170,0,0.6); }
+.status { font-size: 0.75rem; letter-spacing: 1px; color: #8892b0; display: flex; align-items: center; gap: 6px; }
+.pulse-dot { width: 7px; height: 7px; background: #00ffaa; border-radius: 50%; box-shadow: 0 0 8px #00ffaa; }
+
+/* Tarjeta flotante lateral */
+#planet-card {
+  position: absolute; top: 24px; right: 28px; width: 340px; z-index: 10;
+  background: rgba(13, 16, 26, 0.75); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px;
+  padding: 24px; box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+#planet-card.hidden { transform: translateX(380px); opacity: 0; pointer-events: none; }
+#close-card { float: right; background: none; border: none; color: #8892b0; font-size: 1.4rem; cursor: pointer; }
+#planet-card h2 { font-size: 1.8rem; margin-bottom: 4px; color: #fff; }
+.badge { display: inline-block; font-size: 0.75rem; font-weight: 700; color: #00d9ff; background: rgba(0, 217, 255, 0.12); padding: 3px 8px; border-radius: 4px; margin-bottom: 12px; }
+hr { border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 12px 0; }
+.stat-row { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; color: #a8b2d1; }
+.stat-row strong { color: #fff; }
+#card-desc { font-size: 0.88rem; line-height: 1.5; color: #ccd6f6; margin: 14px 0; }
+#focus-btn {
+  width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ffaa00;
+  background: rgba(255,170,0,0.15); color: #ffaa00; font-weight: bold; cursor: pointer;
+  transition: 0.2s;
+}
+#focus-btn:hover { background: #ffaa00; color: #000; }
+
+/* Controles inferiores */
+#hud-footer {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 10;
+  display: flex; gap: 20px; align-items: center; background: rgba(13, 16, 26, 0.65);
+  backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px; border-radius: 30px;
+}
+#reset-cam-btn {
+  background: none; border: 1px solid #00d9ff; color: #00d9ff; padding: 6px 14px;
+  border-radius: 20px; font-size: 0.75rem; font-weight: 700; cursor: pointer;
+}
+#reset-cam-btn:hover { background: #00d9ff; color: #000; }
+.time-control { display: flex; align-items: center; gap: 10px; font-size: 0.75rem; font-weight: 700; color: #8892b0; }
+input[type=range] { accent-color: #00d9ff; cursor: pointer; }
